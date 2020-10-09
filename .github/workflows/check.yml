@@ -20,16 +20,13 @@ jobs:
         with:
           node-version: '12'
           check-latest: true
-      - run: npm i
-      - run: npm run lint
-      - run: npm run test
-#      - uses: borales/actions-yarn@v2.0.0
-#        with:
-#          cmd: install # will run `yarn install` command
-#      - uses: borales/actions-yarn@v2.0.0
-#        with:
-#          cmd: lint # will run `yarn lint` command
-#      - uses: borales/actions-yarn@v2.0.0
-#        with:
-#          cmd: test # will run `yarn test` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: lint # will run `yarn lint` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: test # will run `yarn test` command
 
