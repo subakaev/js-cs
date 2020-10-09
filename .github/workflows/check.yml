@@ -14,13 +14,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+          check-latest: true
       - run: npm i
       - run: npm run lint
       - run: npm run test
