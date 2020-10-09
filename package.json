@@ -8,10 +8,6 @@
     "lint": "npx eslint .",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
-  "jest": {
-    "testEnvironment": "jest-environment-node",
-    "transform": {}
-  },
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
