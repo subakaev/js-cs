@@ -62,7 +62,7 @@ describe("inorder traversal tests", () => {
   ];
 
   test.each(table)(
-    "inorder traversal recursive test: %i",
+    "inorder traversal recursive test: %s",
     (treeArray, expected) => {
       const array = [];
       const func = (value) => array.push(value);
@@ -96,12 +96,46 @@ describe("preorder traversal tests", () => {
   ];
 
   test.each(table)(
-    "preorder traversal recursive test: %i",
+    "preorder traversal recursive test: %s",
     (treeArray, expected) => {
       const array = [];
       const func = (value) => array.push(value);
 
       BinaryTree.fromArray(treeArray).preOrderTraversal(func);
+
+      expect(array).toEqual(expected);
+    }
+  );
+});
+
+describe("postorder traversal tests", () => {
+  const table = [
+    [[1], [1]],
+    [
+      [1, 2, 3],
+      [2, 3, 1],
+    ],
+    [
+      [1, 2, null, 3, null, 4],
+      [4, 3, 2, 1],
+    ],
+    [
+      [1, null, 2, null, 3, null, 4],
+      [4, 3, 2, 1],
+    ],
+    [
+      [1, 2, 3, 4, 5, 6, 7],
+      [4, 5, 2, 6, 7, 3, 1],
+    ],
+  ];
+
+  test.each(table)(
+    "postorder traversal recursive test: %s",
+    (treeArray, expected) => {
+      const array = [];
+      const func = (value) => array.push(value);
+
+      BinaryTree.fromArray(treeArray).postOrderTraversal(func);
 
       expect(array).toEqual(expected);
     }
