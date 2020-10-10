@@ -8,7 +8,17 @@ class BinaryTree {
   // insertChild(value) {}
   //
   // // left, root, right
-  // inOrderTraversal(func = console.log) {}
+  inOrderTraversal(func = console.log) {
+    if (this.left !== null) {
+      this.left.inOrderTraversal(func);
+    }
+
+    func(this.value);
+
+    if (this.right !== null) {
+      this.right.inOrderTraversal(func);
+    }
+  }
   //
   // // root, left, right
   // preOrderTraversal(func = console.log) {}

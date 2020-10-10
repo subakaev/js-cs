@@ -39,3 +39,34 @@ describe("BinaryTree.fromArray tests", () => {
     expect(BinaryTree.fromArray(inputArray)).toMatchObject(expected);
   });
 });
+
+describe("inorder traversal tests", () => {
+  let table = [
+    [[1], [1]],
+    [
+      [1, 2, 3],
+      [2, 1, 3],
+    ],
+    [
+      [1, 2, null, 3, null, 4],
+      [4, 3, 2, 1],
+    ],
+    [
+      [1, null, 2, null, 3, null, 4],
+      [1, 2, 3, 4],
+    ],
+    [
+      [1, 2, 3, 4, 5, 6, 7],
+      [4, 2, 5, 1, 6, 3, 7],
+    ],
+  ];
+
+  test.each(table)("inorder traversal recursive test: %i", (treeArray, expected) => {
+    const array = [];
+    const func = (value) => array.push(value);
+
+    BinaryTree.fromArray(treeArray).inOrderTraversal(func);
+
+    expect(array).toEqual(expected);
+  });
+});
