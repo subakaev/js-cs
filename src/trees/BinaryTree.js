@@ -21,7 +21,17 @@ class BinaryTree {
   }
   //
   // // root, left, right
-  // preOrderTraversal(func = console.log) {}
+  preOrderTraversal(func = console.log) {
+    func(this.value);
+
+    if (this.left !== null) {
+      this.left.preOrderTraversal(func);
+    }
+
+    if (this.right !== null) {
+      this.right.preOrderTraversal(func);
+    }
+  }
   //
   // // left, right, root
   // postOrderTraversal(func = console.log) {}

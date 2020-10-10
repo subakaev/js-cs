@@ -61,12 +61,49 @@ describe("inorder traversal tests", () => {
     ],
   ];
 
-  test.each(table)("inorder traversal recursive test: %i", (treeArray, expected) => {
-    const array = [];
-    const func = (value) => array.push(value);
+  test.each(table)(
+    "inorder traversal recursive test: %i",
+    (treeArray, expected) => {
+      const array = [];
+      const func = (value) => array.push(value);
 
-    BinaryTree.fromArray(treeArray).inOrderTraversal(func);
+      BinaryTree.fromArray(treeArray).inOrderTraversal(func);
 
-    expect(array).toEqual(expected);
-  });
+      expect(array).toEqual(expected);
+    }
+  );
+});
+
+describe("preorder traversal tests", () => {
+  const table = [
+    [[1], [1]],
+    [
+      [1, 2, 3],
+      [1, 2, 3],
+    ],
+    [
+      [1, 2, null, 3, null, 4],
+      [1, 2, 3, 4],
+    ],
+    [
+      [1, null, 2, null, 3, null, 4],
+      [1, 2, 3, 4],
+    ],
+    [
+      [1, 2, 3, 4, 5, 6, 7],
+      [1, 2, 4, 5, 3, 6, 7],
+    ],
+  ];
+
+  test.each(table)(
+    "preorder traversal recursive test: %i",
+    (treeArray, expected) => {
+      const array = [];
+      const func = (value) => array.push(value);
+
+      BinaryTree.fromArray(treeArray).preOrderTraversal(func);
+
+      expect(array).toEqual(expected);
+    }
+  );
 });
