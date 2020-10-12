@@ -85,6 +85,34 @@ class BinaryTree {
     }
   }
 
+  getMaxDepthTopDown() {
+    let maxDepth = 0;
+
+    const iter = (node, depth = 1) => {
+      if (node === null) {
+        return;
+      }
+
+      if (node.left === null && node.right === null) {
+        maxDepth = Math.max(maxDepth, depth);
+      }
+
+      iter(node.left, depth + 1);
+      iter(node.right, depth + 1);
+    };
+
+    iter(this);
+
+    return maxDepth;
+  }
+
+  getMaxDepthBottomUp() {
+    const leftDepth = this.left ? this.left.getMaxDepthBottomUp() : 0;
+    const rightDepth = this.right ? this.right.getMaxDepthBottomUp() : 0;
+
+    return Math.max(leftDepth, rightDepth) + 1;
+  }
+
   static fromArray(array = []) {
     if (array.length === 0 || array[0] === null) {
       return null;

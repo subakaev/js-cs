@@ -168,3 +168,23 @@ describe("level order traversal tests", () => {
     expect(array).toEqual(expected);
   });
 });
+
+describe("get max depth tests", () => {
+  const table = [
+    [[1], 1],
+    [[1, 2, 3], 2],
+    [[1, null, 2, null, 3], 3],
+  ];
+
+  test.each(table)("getMaxDepthTopDown for %s", (treeArray, expected) => {
+    const maxDepth = BinaryTree.fromArray(treeArray).getMaxDepthTopDown();
+
+    expect(maxDepth).toBe(expected);
+  });
+
+  test.each(table)("getMaxDepthBottomUp for %s", (treeArray, expected) => {
+    const maxDepth = BinaryTree.fromArray(treeArray).getMaxDepthBottomUp();
+
+    expect(maxDepth).toBe(expected);
+  });
+});
