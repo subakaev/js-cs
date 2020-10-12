@@ -114,40 +114,23 @@ class BinaryTree {
   }
 
   isSymmetric() {
-    let level = [this];
-    let isFinished = false;
-
-    const isArraySymmetric = (array) => {
-      for (let i = 0; i < array.length / 2; i++) {
-        if (array[i] !== array[array.length - i - 1]) {
-          return false;
-        }
+    const areTreesEquals = (leftTree, rightTree) => {
+      if (leftTree === null && rightTree === null) {
+        return true;
       }
 
-      return true;
-    };
-
-    while (!isFinished) {
-      const newLevel = [];
-      isFinished = true;
-
-      for (const node of level) {
-        if (node === null) {
-          newLevel.push(null, null);
-        } else {
-          newLevel.push(node.left, node.right);
-          isFinished = false;
-        }
-      }
-
-      if (!isArraySymmetric(newLevel.map((x) => (x ? x.value : x)))) {
+      if (leftTree === null || rightTree === null) {
         return false;
       }
 
-      level = newLevel;
-    }
+      return (
+        leftTree.value === rightTree.value &&
+        areTreesEquals(leftTree.left, rightTree.right) &&
+        areTreesEquals(leftTree.right, rightTree.left)
+      );
+    };
 
-    return true;
+    return areTreesEquals(this.left, this.right);
   }
 
   static fromArray(array = []) {
