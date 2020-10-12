@@ -19,6 +19,12 @@ class BinaryTree {
       this.right.inOrderTraversal(func);
     }
   }
+
+  // eslint-disable-next-line no-unused-vars
+  inOrderTraversalIterative(func = console.log) {
+    // todo
+  }
+
   //
   // // root, left, right
   preOrderTraversal(func = console.log) {
@@ -32,6 +38,12 @@ class BinaryTree {
       this.right.preOrderTraversal(func);
     }
   }
+
+  // eslint-disable-next-line no-unused-vars
+  preOrderTraversalIterative(func = console.log) {
+    // todo
+  }
+
   //
   // // left, right, root
   postOrderTraversal(func = console.log) {
@@ -44,6 +56,11 @@ class BinaryTree {
     }
 
     func(this.value);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  postOrderTraversalIterative(func = console.log) {
+    // todo
   }
 
   levelOrderTraversal(func = console.log) {
