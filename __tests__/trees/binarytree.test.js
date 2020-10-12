@@ -188,3 +188,21 @@ describe("get max depth tests", () => {
     expect(maxDepth).toBe(expected);
   });
 });
+
+describe("is tree symmetric tests", () => {
+  const table = [
+    [[1], true],
+    [[1, 2, 2], true],
+    [[1, 2, 3], false],
+    [[1, null, 2], false],
+    [[1, 2, 2, 3, 4, 4, 3], true],
+    [[1, 2, 2, null, 3, null, 3], false],
+    [[1, 2, 2, 3, null, null, 3], true],
+  ];
+
+  test.each(table)("isSymmetric for %s", (treeArray, expected) => {
+    const isSymmetric = BinaryTree.fromArray(treeArray).isSymmetric();
+
+    expect(isSymmetric).toBe(expected);
+  });
+});

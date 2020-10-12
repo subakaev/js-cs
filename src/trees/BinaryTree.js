@@ -113,6 +113,43 @@ class BinaryTree {
     return Math.max(leftDepth, rightDepth) + 1;
   }
 
+  isSymmetric() {
+    let level = [this];
+    let isFinished = false;
+
+    const isArraySymmetric = (array) => {
+      for (let i = 0; i < array.length / 2; i++) {
+        if (array[i] !== array[array.length - i - 1]) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    while (!isFinished) {
+      const newLevel = [];
+      isFinished = true;
+
+      for (const node of level) {
+        if (node === null) {
+          newLevel.push(null, null);
+        } else {
+          newLevel.push(node.left, node.right);
+          isFinished = false;
+        }
+      }
+
+      if (!isArraySymmetric(newLevel.map((x) => (x ? x.value : x)))) {
+        return false;
+      }
+
+      level = newLevel;
+    }
+
+    return true;
+  }
+
   static fromArray(array = []) {
     if (array.length === 0 || array[0] === null) {
       return null;
