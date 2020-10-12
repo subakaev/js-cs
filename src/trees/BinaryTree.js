@@ -46,6 +46,28 @@ class BinaryTree {
     func(this.value);
   }
 
+  levelOrderTraversal(func = console.log) {
+    let level = [this];
+
+    while (level.length > 0) {
+      func(level.map((x) => x.value));
+
+      const newLevel = [];
+
+      for (const node of level) {
+        if (node.left !== null) {
+          newLevel.push(node.left);
+        }
+
+        if (node.right !== null) {
+          newLevel.push(node.right);
+        }
+      }
+
+      level = newLevel;
+    }
+  }
+
   static fromArray(array = []) {
     if (array.length === 0 || array[0] === null) {
       return null;
@@ -77,10 +99,5 @@ class BinaryTree {
     return tree;
   }
 }
-
-// todo the same as static??
-// BinaryTree.fromArray = (array) => {
-//   return null;
-// };
 
 export default BinaryTree;

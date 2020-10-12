@@ -141,3 +141,30 @@ describe("postorder traversal tests", () => {
     }
   );
 });
+
+describe("level order traversal tests", () => {
+  const table = [
+    [[1], [[1]]],
+    [
+      [1, 2, 3],
+      [[1], [2, 3]],
+    ],
+    [
+      [1, null, 2, null, 3],
+      [[1], [2], [3]],
+    ],
+    [
+      [1, 2, null, 3, null, 4],
+      [[1], [2], [3], [4]],
+    ],
+  ];
+
+  test.each(table)("level order traversal: %s", (treeArray, expected) => {
+    const array = [];
+    const func = (value) => array.push(value);
+
+    BinaryTree.fromArray(treeArray).levelOrderTraversal(func);
+
+    expect(array).toEqual(expected);
+  });
+});
